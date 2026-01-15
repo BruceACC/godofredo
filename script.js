@@ -1,15 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. MENÚ MÓVIL (Hamburguesa) ---
+    // --- 1. MENÚ MÓVIL ---
     const menuBtn = document.getElementById('menu-btn');
-    const navLinks = document.getElementById('nav-links');
+    const navLinks = document.getElementById('navLinks');
     const links = document.querySelectorAll('.nav-link');
 
-    // Toggle menú al hacer click en el icono
     menuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        // Cambiar icono de hamburguesa a X
         const icon = menuBtn.querySelector('i');
+        // Alternar icono entre hamburguesa y 'X'
         if (navLinks.classList.contains('active')) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-times');
@@ -38,7 +36,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.scroll-reveal').forEach(el => {
-        el.classList.add('hidden-initial'); // Clase base para ocultar
         observer.observe(el);
+    });
+
+    // --- 3. EFECTO 3D CARD TILT (Del nuevo diseño) ---
+    const cards3D = document.querySelectorAll('.card-3d-wrap');
+    cards3D.forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const cardRect = this.getBoundingClientRect();
+            const x = e.clientX - cardRect.left;
+            const y = e.clientY - cardRect.top;
+            const centerX = cardRect.width / 2;
+            const centerY = cardRect.height / 2;
+            // Ajusta la intensidad dividiendo por un número mayor o menor (ej: 20)
+            const rotateY = (x - centerX) / 20; 
+            const rotateX = (centerY - y) / 20;
+            
+            this.querySelector('.card-inner-3d').style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.querySelector('.card-inner-3d').style.transform = 'rotateY(0) rotateX(0)';
+        });
     });
 });

@@ -8,10 +8,12 @@
   @import url('https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@700&display=swap');
 
   :root {
-    --gold-front: #eac747;
-    --gold-edge: #b8921f; /* Color del grosor */
-    --shield-bg: #1a3c75;
+    --gold-front: #ffda08fd;
+    --gold-edge: #8d7f00; /* Color del grosor */
+    --shield-bg: #0a1b3a;
   }
+
+/* En tu archivo logo.html */
 
 body {
     /* CAMBIO IMPORTANTE: Cambia el color de fondo a transparent */
@@ -69,13 +71,13 @@ body {
   /* === ESTILOS FRONTAL Y TRASERO (Las caras bonitas) === */
   .logo-layer:first-child .shield,
   .logo-layer:last-child .shield {
-    background: linear-gradient(135deg, #fff1a8 0%, var(--gold-front) 50%, var(--gold-edge) 100%);
-    filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.5));
+    background: linear-gradient(135deg, #fff1a800 0%, var(--gold-front) 50%, var(--gold-edge) 100%);
+    filter: drop-shadow(0px 0px 5px rgb(0, 0, 0));
   }
 
   .logo-layer:first-child .text-element,
   .logo-layer:last-child .text-element {
-     background: linear-gradient(to bottom, #fff1a8 0%, var(--gold-front) 50%, var(--gold-edge) 100%);
+     background: linear-gradient(to bottom, #fff1a800 0%, var(--gold-front) 50%, var(--gold-edge) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
